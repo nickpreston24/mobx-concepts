@@ -8,12 +8,12 @@ const styles = {
 
 const Counter = observer(({ state }) => {
 
-    const { increment, decrement } = state
+    const { increment, decrement, count } = state
     const { counter } = styles
 
     return (
         <div>
-            <b style={counter}>Count: {state.count}</b> <br />
+            <b style={counter}>Count: {count}</b> <br />
             <button onClick={increment}>+</button>
             <button onClick={decrement}>-</button>
         </div>
