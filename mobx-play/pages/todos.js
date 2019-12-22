@@ -1,44 +1,54 @@
-import { observable, computed } from "mobx"
+import store from './stores/todos'
+import Todo from './models/todo'
 import { observer } from 'mobx-react'
+// import TodoItem from './components/TodoItem'
 
-// @observer
-const TodosView = observer((props) => {
+/**
+ * Todo List (view)
+ */
+const TodoList = props => {
+
+    let { todos = [] } = props
+
     return (
-        <div>
+        <>
             <ul>
-                {props.todos && props.todoList.todos
-                    .map(todo => (
-                        <TodoItem todo={todo} key={todo.id} />
-                    ))
-                }
+                {todos.map(todo => (
+                    <TodoItem todo={todo} key={todo.id} />
+                ))}
             </ul>
-            Tasks left: {this.props.todoList.unfinished}
-        </div>
+            Tasks left: {todos.unfinished}<br />
+        </>
+    )
+}
+
+const TodoItem = observer(({ todo }) => {
+    console.log('todo:', todo);
+    const { finished, toggleCompleted } = todo
+    console.log(!!todo.toggleCompleted);
+    
+    return (
+        <>
+            <li>
+                <input
+                    type="checkbox"
+                    checked={finished}
+                    onClick={toggleCompleted}
+                />
+                {todo.title}
+            </li>
+        </>
     )
 })
 
-const TodoItem = observer(({ todo }) => (
-    <li>
-        <input
-            type="checkbox"
-            checked={todo.finished}
-            onClick={() => (todo.finished = !todo.finished)}
-        />
-        {todo.title}
-    </li>
-))
-
-class TodoList {
-    @observable todos = []
-    @computed get unfinished() {
-        return this.todos.filter(todo => !todo.finished).length
+TodoList.getInitialProps = async function () {
+    const tasks = ["Scour the oven", "Wash the cat", "Organize sock drawer", "Honey do-list"]
+    console.log('store', store);
+    console.log(tasks);
+    tasks.forEach(task => store.todos.push(new Todo(task)))
+    return {
+        todos: store.todos
     }
 }
 
-class Todo {
-    id = Math.random()
-    @observable title = ""
-    @observable finished = false
-}
-
-export default TodosView
+export default TodoList

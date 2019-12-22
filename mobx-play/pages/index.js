@@ -1,43 +1,18 @@
 import React from 'react'
-import Head from 'next/head'
-// import Nav from '../components/nav'
-import { observable } from 'mobx'
-import TodosView from './todos'
+// import TodoList from './todos'
+// import store from './stores/todos'
+import Link from 'next/link'
 
-import User from '../models/User.ts'
+const Home = () => {
+  return (
+    <div>
+      <div className="hero">
+        <Link href="/todos">
+          <a>Todo List</a>
+        </Link>
+      </div>
 
-class MyStore {
-  @observable searchOverlayIsOpen = false;
-  @observable person = new User("Michael", "Nicholas", "Preston")
-  @observable name = ''
-}
-
-var store = new MyStore();
-
-function changeName(name = 'temp') {
-  store.name = name;
-  console.log('Name changed!');
-}
-
-const Home = () => (
-  <div>
-    <Head>
-      <title>Home</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
-
-    {/* <Nav /> */}
-
-    <div className="hero">
-      <h1>Hello, {store.person.fullName}!</h1>
-
-      <TodosView />
-
-      <button onClick={changeName}>???</button>
-
-    </div>
-
-    <style jsx>{`
+      <style jsx>{`
       .hero {
         width: 100%;
         color: #333;
@@ -83,7 +58,8 @@ const Home = () => (
         color: #333;
       }
     `}</style>
-  </div>
-)
+    </div>
+  )
+}
 
 export default Home
