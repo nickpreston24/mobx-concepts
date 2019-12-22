@@ -21,22 +21,3 @@ const RadioPicker = ({ selector }) => {
 }
 
 export default RadioPicker
-
-/** A radio button with label for React */
-const RadioButton = (props) => {
-  const { text, value = "", onChange, checked = false } = props
-  return (
-
-    <div className="form-check">
-      <input
-        type="radio"
-        name="radio-picker-button"
-        value={value}
-        checked={checked}
-        className="form-check-input"
-      />
-      <label>{text}</label>
-    </div>
-  )
-}
-
