@@ -11,11 +11,10 @@ const TodoList = observer(({ store }) => {
     const todos = store.todos || []
 
     function submitTodo() {
-        var input = document.getElementById('#todo')
-        const text = input.value
-        store.add(text)
+        const input = document.getElementById('#todo')
+        const title = input.value
+        store.add(title)
         input.value = null
-
     }
 
     function handleKeyDown(event) {

@@ -21,8 +21,8 @@ class TodoStore {
     }
 
     /** A function which modifies state */
-    @action add(todoTitle) {
-        this.todos.push(new Todo(todoTitle))
+    @action add(title) {
+        this.todos.push(new Todo(title))
     }
 }
 
