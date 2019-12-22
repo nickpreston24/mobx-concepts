@@ -1,19 +1,16 @@
-
-const units = ["Kelvin", "Fahrenheit", "Celcius"]
-
-const RadioPicker = ({ selector }) => {
+const RadioPicker = ({ selector, options = [] }) => {
   return (
     <form>
-      {units.map((unit, index) => {
+      {options.map((option, index) => {
         return (
           <div className="form-check" key={index} >
             <input
               type="radio"
               name="radio-picker-button"
-              onChange={() => selector(unit)}
+              onChange={() => selector(option)}
               className="form-check-input"
             />
-            <label>{unit}</label>
+            <label>{option}</label>
           </div>
         )
       })}
