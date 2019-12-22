@@ -1,6 +1,4 @@
 import React from 'react'
-// import TodoList from './todos'
-// import store from './stores/todos'
 import Link from 'next/link'
 
 const Home = () => {
@@ -10,8 +8,10 @@ const Home = () => {
         <Link href="/todos">
           <a>Todo List</a>
         </Link>
+        <h1>Hello, World!</h1>
+        <p>Adipisicing magna quis aliquip nostrud qui. Et anim amet nostrud eu nulla pariatur in ut in voluptate incididunt amet. Commodo reprehenderit fugiat occaecat ut adipisicing quis laborum cupidatat nisi aliquip culpa do. Ut deserunt non fugiat amet enim eiusmod nulla consectetur incididunt commodo elit. Sit aute voluptate sint sunt Lorem sit laboris velit. Dolore eu non commodo nulla dolore voluptate ex id.</p><br />
+        <p>Nulla magna cupidatat aute sit nulla adipisicing adipisicing sit ullamco et elit Lorem. Aliqua labore aliqua nostrud ut. Tempor eu nisi duis mollit excepteur magna anim duis proident consectetur nulla. Qui elit consequat laborum qui eu ullamco elit cupidatat occaecat laborum dolore occaecat. Nostrud culpa duis aute magna dolore eiusmod deserunt. Aliqua occaecat proident qui nisi irure qui ea cupidatat. Cillum labore ad labore eu sint sunt dolore laborum.</p>
       </div>
-
       <style jsx>{`
       .hero {
         width: 100%;

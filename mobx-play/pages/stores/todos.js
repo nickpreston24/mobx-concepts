@@ -1,23 +1,24 @@
-import { observable, autorun } from 'mobx'
+import { observable, autorun, computed } from 'mobx'
 
-var todoStore = observable({
+class TodoStore {
     /* some observable state */
-    todos: [],
+    @observable todos = []
 
     /* a derived value */
-    get completed() {
+    @computed get completed() {
         return this.todos.filter(todo => todo.finished).length
-    },
+    }
 
     /* a derived value */
-    get unfinished() {
+    @computed get unfinished() {
+        // console.log('calling unfinished()');
         return this.todos.filter(todo => !todo.finished).length
     }
-})
+}
 
 /* a function that observes the state */
-autorun(function () {
-    console.log("Completed %d of %d items", todoStore.completed, todoStore.todos.length)
-})
+// autorun(function () {
+//     console.log("Completed %d of %d items", todoStore.completed, todoStore.todos.length)
+// })
 
-export default todoStore
+export default TodoStore

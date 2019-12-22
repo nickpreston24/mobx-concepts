@@ -5,21 +5,21 @@ import { observable } from 'mobx'
  * Todo Item (render)
  */
 const TodoItem = observer(({ todo }) => {
-
     const { finished, toggleCompleted } = todo
-    
+
     return (
         <>
             <li>
                 <input
                     type="checkbox"
-                    checked={finished}
-                    onClick={toggleCompleted}
+                    checked={todo.finished}
+                    onClick={todo.toggleCompleted}
                 />
-                {todo.title}
+                {todo.title}<br />
             </li>
         </>
     )
 })
+
 
 export default TodoItem
