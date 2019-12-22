@@ -1,15 +1,20 @@
 import Header from '../components/Header'
+import TimerProvider from '../contexts/TimerContext'
 
 const layoutStyle = {
     margin: 20,
     padding: 20,
-    border: '1px solid #DDD'
-};
+    border: '1px solid #DDDf31'
+}
 
 const Layout = props => (
-    <div style={layoutStyle}>
+    <div>
         <Header />
-        {props.children}
+        <div style={layoutStyle}>
+            <TimerProvider>
+                {props.children}
+            </TimerProvider>
+        </div>
     </div>
 )
 

@@ -1,17 +1,19 @@
 import React from 'react'
 import Layout from './components/Layout'
+import StoreProvider from './/contexts/StoresContext'
 
 const Home = () => {
   return (
     <>
       <div className="hero">
-        <Layout>
-          <div>
-            <h1>Hello, World!</h1>
-            <p>Adipisicing magna quis aliquip nostrud qui. Et anim amet nostrud eu nulla pariatur in ut in voluptate incididunt amet. Commodo reprehenderit fugiat occaecat ut adipisicing quis laborum cupidatat nisi aliquip culpa do. Ut deserunt non fugiat amet enim eiusmod nulla consectetur incididunt commodo elit. Sit aute voluptate sint sunt Lorem sit laboris velit. Dolore eu non commodo nulla dolore voluptate ex id.</p><br />
-            <p>Nulla magna cupidatat aute sit nulla adipisicing adipisicing sit ullamco et elit Lorem. Aliqua labore aliqua nostrud ut. Tempor eu nisi duis mollit excepteur magna anim duis proident consectetur nulla. Qui elit consequat laborum qui eu ullamco elit cupidatat occaecat laborum dolore occaecat. Nostrud culpa duis aute magna dolore eiusmod deserunt. Aliqua occaecat proident qui nisi irure qui ea cupidatat. Cillum labore ad labore eu sint sunt dolore laborum.</p>
-          </div>
-        </Layout>
+        <StoreProvider>
+          <Layout>
+            <div>
+              <h1>Hello, World!</h1>
+              <p>This is a sample project for showing off mobx with Typescript.  Powered by NextJS's wonderful routing (and much, much more)!</p>
+            </div>
+          </Layout>
+        </StoreProvider>
       </div>
       <style jsx>{`
       .hero {
