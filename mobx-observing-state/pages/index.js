@@ -1,10 +1,11 @@
-import { observable, decorate, computed } from "mobx";
+import { observable, computed } from "mobx";
 import { observer } from "mobx-react";
 
 class Todo {
   constructor(title) {
     this.title = title
   }
+  
   id = Math.random()
   @observable title = ""
   @observable finished = false

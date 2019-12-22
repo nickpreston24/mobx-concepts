@@ -1,36 +1,45 @@
-import TodoStore from './stores/todos'
-import Todo from './models/todo'
 import { observer } from 'mobx-react'
 import TodoItem from './components/TodoItem'
-import Link from 'next/link'
+import Layout from './components/Layout'
+import { todoStore } from './stores/Todos'
 
 /**
  * Todo List (view)
  */
 const TodoList = observer(({ store }) => {
+
     const todos = store.todos || []
 
+    function submitTodo() {
+        var input = document.getElementById('#todo')
+        const text = input.value
+        store.add(text)
+        input.value = null
+
+    }
+
+    function handleKeyDown(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            submitTodo();
+        }
+    }
+
     return (
-        <>
-            <Link href="/">
-                <a>Home</a>
-            </Link>
-            <ul>
+        <Layout>
+            <form>
+                <input id="#todo" type="text" onKeyDown={handleKeyDown} ></input><br />
                 {todos.map(todo => <TodoItem todo={todo} key={todo.id} />)}
-            </ul>
-            Tasks left: {store.unfinished}<br />
-        </>
+                Tasks left: {store.unfinished}<br />
+            </form>
+        </Layout>
     )
 })
 
-
+/**Next JS' awesome data fetching func */
 TodoList.getInitialProps = async function () {
-    const tasks = ["Scour the oven", "Wash the cat", "Organize sock drawer", "Honey do-list"]
-    const store = new TodoStore()
-    tasks.forEach(task => store.todos.push(new Todo(task)))
-
     return {
-        store: store
+        store: todoStore
     }
 }
 

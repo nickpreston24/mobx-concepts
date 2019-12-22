@@ -9,7 +9,6 @@ class Todo {
     @observable finished = false
     /** Using a bound action: https://mobx.js.org/refguide/action.html*/
     @action.bound toggleCompleted() {
-        console.log('toggled');
         this.finished = !this.finished
     }
 }
